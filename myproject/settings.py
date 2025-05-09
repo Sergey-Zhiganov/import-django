@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-+jpq(a$l9v8$b9c15sq$4t4o)_yk#2wq9g93g_t#gaf#8f(kr9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://import-django.onrender.com']
+ALLOWED_HOSTS = ['https://Lensen.pythonanywhere.com']
 
 
 # Application definition
@@ -78,14 +78,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': 'Shop',
-        'HOST': 'MSI\\SQLEXPRESS',
-        'PORT': '',
-        'OPTIONS': {
-            'driver': 'ODBC Driver 18 for SQL Server',
-            'extra_params': 'TrustServerCertificate=yes;',
-        }
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '',
+        'NAME': '$Shop',
+        'PORT': '3306',
+        'USER': '',
+        'PASSWORD': ''
     }
 }
 
