@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-+jpq(a$l9v8$b9c15sq$4t4o)_yk#2wq9g93g_t#gaf#8f(kr9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Lensen.pythonanywhere.com']
+ALLOWED_HOSTS = ['https://import-django.onrender.com']
 
 
 # Application definition
