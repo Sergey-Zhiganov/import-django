@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Корзина{% endblock %}
+{% block header_title %}Ваша корзина{% endblock %}
+
+{% block content %}
+    <h2>Товары в корзине:</h2>
+    {% if cart_items %}
+        <ul>
+            {% for item in cart_items %}
+                <li class="cart-item">
+                    {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    {% endif %}
+                    <strong>{{ item.product.name }}</strong><br>
+                    Цена: {{ item.product.price }} руб.<br>
+                    Количество: {{ item.quantity }} шт.<br>
+                    Скидка: {{ item.discount }} %<br>
+                    Сумма за позицию: {{ item.total|floatformat:2 }} руб.<br>
+
+                    <a href="{% url 'cart_descrease' item.product.id %}">Убрать 1</a> |
+                    <a href="{% url 'cart_remove' item.product.id %}">Удалить</a>
+                    <hr>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Общая сумма:</strong> {{ total_price|floatformat:2 }} руб.</p>
+
+        <form method="post" action="{% url 'cart_clear' %}">
+            {% csrf_token %}
+            <button type="submit">Очистить корзину</button>
+        </form>
+
+        {% comment %} <form method="post" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <button type="submit">Оформить заказ</button>
+        </form> {% endcomment %}
+    {% else %}
+        <p>Ваша корзина пуста</p>
+    {% endif %}
+{% endblock %}

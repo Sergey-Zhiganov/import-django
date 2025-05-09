@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Теги{% endblock %}
+{% block header_title %}Список тегов{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for tag in tags %}
+            <li>
+                <strong>{{ tag.name }}</strong><br>
+                <em>{{ tag.description }}</em><br>
+                <small>Товаров с этим тегом: {{ tag.products.count }}</small>
+            </li>
+        {% empty %}
+            <li>Нет доступных тегов</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

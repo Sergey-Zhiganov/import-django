@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Товары категории {{ category.name }}{% endblock %}
+{% block header_title %}Категории товаров{% endblock %}
+
+{% block content %}
+    <h1>Категория: {{ category.name }}</h1>
+    <p>{{ category.description }}</p>
+
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a> — {{ product.price }} руб.
+            </li>
+        {% empty %}
+            <li>В этой категории пока нет товаров.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

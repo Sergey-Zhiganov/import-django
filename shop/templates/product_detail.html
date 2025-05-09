@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Товар: {{ product.name }}{% endblock %}
+{% block header_title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    {% if product.image %}
+        <img class="product-image" src="{{ product.image.url }}" alt="{{ product.name }}">
+    {% endif %}
+
+    <h2>Описание</h2>
+    <p>{{ product.description }}</p>
+
+    <p><strong>Цена:</strong> {{ product.price }} руб.</p>
+    <p><strong>Категория:</strong> {{ product.category.name }}</p>
+    <p><strong>Теги:</strong>
+        {% for tag in product.tags.all %}
+            {{ tag.name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+            Нет тегов
+        {% endfor %}
+    </p>
+    <p><strong>Создано:</strong> {{ product.created_at|date:"d.m.Y H:i" }}</p>
+    <p><strong>Последнее обновление:</strong> {{ product.updated_at|date:"d.m.Y H:i" }}</p>
+
+    <a href="{% url 'edit_product' product.id %}">Редактировать</a> |
+    <a href="{% url 'delete_product' product.id %}">Удалить</a>
+{% endblock %}

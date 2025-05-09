@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Обратная связь{% endblock %}
+{% block header_title %}Обратная связь{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="message">Сообщение:</label>
+        <textarea id="message" name="message" required></textarea><br><br>
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock %}
+
